@@ -14,12 +14,7 @@ console.log("Olá, mundo!");
 // Prompt simulado
 const nome = "Usuário";
 console.log(\`Bem-vindo, \${nome}!\`);
-
-// Um cálculo simples
-const a = 10;
-const b = 5;
-const soma = a + b;
-console.log(\`A soma de \${a} e \${b} é \${soma}\`);`;
+`;
 
   // Função de cópia
   function copyCode() {
