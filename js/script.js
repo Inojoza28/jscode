@@ -224,7 +224,6 @@ console.log(\`Bem-vindo, \${nome}!\`);
     terminal.scrollTop = terminal.scrollHeight;
   }
 
-
   // Função principal de limpeza (sem mensagem)
   function clearTerminalSilent() {
     terminal.innerHTML = "";
@@ -239,10 +238,8 @@ console.log(\`Bem-vindo, \${nome}!\`);
 
   // Execute JavaScript code
   function executeCode() {
-
     // Limpa o terminal silenciosamente antes de cada execução
-    clearTerminalSilent(); // ← Alterado aqui
-
+    clearTerminalSilent();
 
     const code = codeEditor.value;
 
@@ -329,29 +326,71 @@ console.log(\`Bem-vindo, \${nome}!\`);
     }
   }
 
+  // Correção: Função para posicionar corretamente o cursor
+  function updateCursorPosition() {
+    // Garante que o cursor esteja visível
+    const selStart = codeEditor.selectionStart;
+    const selEnd = codeEditor.selectionEnd;
+    
+    // Re-aplicar a seleção para garantir que o cursor se mantenha no lugar correto
+    setTimeout(() => {
+      codeEditor.selectionStart = selStart;
+      codeEditor.selectionEnd = selEnd;
+    }, 0);
+  }
+
   // Garantir que o código e o layout estejam alinhados
   function updateLayout() {
-    codeEditor.style.height = `${codeContainer.clientHeight}px`;
-    codeEditor.style.width = `${codeContainer.clientWidth}px`;
-    syntaxHighlighter.style.height = `${codeContainer.clientHeight}px`;
-    syntaxHighlighter.style.width = `${codeContainer.clientWidth}px`;
-
-    // Manter o padding igual entre os elementos
-    const paddingLeft = window.getComputedStyle(codeContainer).paddingLeft;
-    const paddingTop = window.getComputedStyle(codeContainer).paddingTop;
-
-    codeEditor.style.padding = syntaxHighlighter.style.padding =
-      `${paddingTop} ${paddingLeft}`;
+    // Configuração corrigida para permitir scroll e interação natural
+    syntaxHighlighter.style.overflow = "hidden"; // O codeContainer lidará com o scroll
+    
+    // Dimensões iguais
+    codeEditor.style.height = "100%";
+    codeEditor.style.width = "100%";
+    syntaxHighlighter.style.height = "100%"; 
+    syntaxHighlighter.style.width = "100%";
+    
+    // Garantir que o padding seja igual
+    const computedStyle = window.getComputedStyle(codeContainer);
+    const padding = computedStyle.padding;
+    
+    // Aplicar o mesmo padding para manter o alinhamento perfeito
+    codeEditor.style.padding = padding;
+    syntaxHighlighter.style.padding = padding;
+    
+    // Fonte e espaçamento
+    const fontFamily = "'Fira Code', monospace";
+    const lineHeight = "1.6";
+    const fontSize = computedStyle.fontSize;
+    
+    codeEditor.style.fontFamily = fontFamily;
+    codeEditor.style.lineHeight = lineHeight;
+    codeEditor.style.fontSize = fontSize;
+    
+    syntaxHighlighter.style.fontFamily = fontFamily;
+    syntaxHighlighter.style.lineHeight = lineHeight;
+    syntaxHighlighter.style.fontSize = fontSize;
   }
 
   // Event Listeners
   executeBtn.addEventListener("click", executeCode);
-  clearTerminalBtn.addEventListener("click", clearTerminalWithMessage); // ← Alterado
+  clearTerminalBtn.addEventListener("click", clearTerminalWithMessage);
   copyBtn.addEventListener("click", copyCode);
 
   codeEditor.addEventListener("keydown", handleTabKey);
-  codeEditor.addEventListener("input", () => applyHighlighting(codeEditor.value));
+  
+  // Corrigido: Eventos atualizados para melhor sincronização
+  codeEditor.addEventListener("input", function() {
+    applyHighlighting(codeEditor.value);
+    updateCursorPosition();
+  });
+  
   codeEditor.addEventListener("scroll", syncScroll);
+  codeEditor.addEventListener("click", updateCursorPosition);
+  codeEditor.addEventListener("keyup", updateCursorPosition);
+  
+  // Capturar mudanças de seleção para posicionamento preciso do cursor
+  codeEditor.addEventListener("select", updateCursorPosition);
 
   window.addEventListener("resize", updateLayout);
 
