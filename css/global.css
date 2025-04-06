@@ -1,38 +1,38 @@
 /* Estilos customizados */
 .gradient-border {
-  position: relative;
-  background: linear-gradient(45deg, #1e293b, #0f172a);
-  border-radius: 0.75rem;
+    position: relative;
+    background: linear-gradient(45deg, #1e293b, #0f172a);
+    border-radius: 0.75rem;
 }
 
 .gradient-border::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  bottom: -1px;
-  background: linear-gradient(45deg, #3b82f6, #10b981);
-  border-radius: inherit;
-  z-index: -1;
-  animation: borderAnim 3s linear infinite;
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, #3b82f6, #10b981);
+    border-radius: inherit;
+    z-index: -1;
+    animation: borderAnim 3s linear infinite;
 }
 
 @keyframes borderAnim {
-  0% { opacity: 0.7; }
-  50% { opacity: 0.3; }
-  100% { opacity: 0.7; }
+    0% { opacity: 0.7; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.7; }
 }
 
 .terminal-entry {
-  padding: 0.375rem 0;
-  border-left: 2px solid transparent;
-  transition: all 0.2s;
+    padding: 0.375rem 0;
+    border-left: 2px solid transparent;
+    transition: all 0.2s;
 }
 
 .terminal-entry:hover {
-  background: rgba(255,255,255,0.03);
-  border-left-color: #3b82f6;
+    background: rgba(255,255,255,0.03);
+    border-left-color: #3b82f6;
 }
 
 .terminal-info { color: #60a5fa; }
@@ -40,113 +40,119 @@
 .terminal-prompt { color: #34d399; }
 
 .editor-toolbar {
-  background: linear-gradient(15deg, #1e293b, #0f172a);
-  border: 1px solid #334155;
-  backdrop-filter: blur(4px);
+    background: linear-gradient(15deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    backdrop-filter: blur(4px);
 }
 
 .neon-shadow {
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
 }
 
 .smooth-transition {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Scrollbar personalizada */
 #terminal::-webkit-scrollbar-track,
 #code-mirror-container::-webkit-scrollbar-track {
-  background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.05);
 }
 
 #terminal::-webkit-scrollbar-thumb,
 #code-mirror-container::-webkit-scrollbar-thumb {
-  background: #3b82f6;
-  border-radius: 4px;
+    background: #3b82f6;
+    border-radius: 4px;
 }
 
 #terminal::-webkit-scrollbar,
 #code-mirror-container::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 
 @keyframes pulse {
-  0% { opacity: 0.8; }
-  50% { opacity: 0.4; }
-  100% { opacity: 0.8; }
+    0% { opacity: 0.8; }
+    50% { opacity: 0.4; }
+    100% { opacity: 0.8; }
 }
 
 .loading-pulse {
-  animation: pulse 1.5s ease-in-out infinite;
+    animation: pulse 1.5s ease-in-out infinite;
 }
 
 /* Feedback de cópia */
 .copy-feedback {
-  opacity: 0;
-  transition: opacity 0.2s, transform 0.2s;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
 }
 
 .copy-feedback.active {
-  opacity: 1;
-  transform: translateY(-5px);
-  animation: fadeOut 1.5s ease-out 0.5s forwards;
+    opacity: 1;
+    transform: translateY(-5px);
+    animation: fadeOut 1.5s ease-out 0.5s forwards;
 }
 
 @keyframes fadeOut {
-  0% { opacity: 1; transform: translateY(-5px); }
-  100% { opacity: 0; transform: translateY(-10px); }
+    0% { opacity: 1; transform: translateY(-5px); }
+    100% { opacity: 0; transform: translateY(-10px); }
 }
 
 /* Editor de código com coloração de sintaxe */
-/* Editor de código com coloração de sintaxe - CORRIGIDO */
+/* Container Principal */
 #code-mirror-container {
-  position: relative;
-  overflow: auto;
-  font-family: 'Fira Code', monospace;
-  line-height: 1.6;
-}
+    position: relative;
+    overflow-x: auto; /* Habilita scroll horizontal */
+    overflow-y: hidden; /* Mantém scroll vertical desativado */
+    font-family: 'Fira Code', monospace;
+    line-height: 1.6;
+    min-height: 520px; /* Altura mínima inicial */
+  }
+  
+  /* Textarea Editável */
+  #code-editor {
+    caret-color: #38bdf8;
+    font-family: 'Fira Code', monospace; /* Garantir mesma fonte */
+    font-size: 14px; /* Tamanho explícito */
+    line-height: 1.6; /* Mesmo line-height */
+    tab-size: 4;
+    overflow-x: auto !important; /* Scroll horizontal automático */
+    overflow-y: hidden !important;
+    white-space: pre !important; /* Impede quebra de linha */
+    min-width: 100%; /* Força expansão horizontal */
+    resize: none;
+    background: none !important;
+    color: transparent !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    white-space: pre;
+    padding: 16px !important; /* Padding fixo para sincronia */
+    margin: 0;
+    border: none;
+    outline: none;
+  }
 
-#code-editor {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-family: 'Fira Code', monospace;
-  line-height: 1.6;
-  tab-size: 4;
-  white-space: pre;
-  resize: none;
-  overflow: auto;
-  background-color: transparent;
-  /* Permitir visualizar o texto com uma cor quase transparente 
-     para melhor UX, mas ainda manter o efeito visual */
-  color: rgba(255, 255, 255, 0.05);
-  caret-color: #38bdf8; /* Cursor visível */
-  z-index: 2;
-}
 
-#syntax-highlighter {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  white-space: pre;
-  pointer-events: none;
-  z-index: 1;
-  font-family: 'Fira Code', monospace;
-  line-height: 1.6;
-  tab-size: 4;
-  overflow: hidden; /* Importante para evitar scroll duplo */
-}
+  /* Elemento de Syntax Highlight */
+  #syntax-highlighter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: pre !important; /* Mantém alinhamento horizontal */
+    min-width: 100%; /* Expande com conteúdo */
+    width: calc(100% - 32px); /* Compensa o padding */
+    height: 100%;
+    padding: 16px !important; /* Mesmo padding do textarea */
+    pointer-events: none;
+    white-space: pre;
+    font-family: 'Fira Code', monospace !important; /* Forçar fonte */
+    font-size: 14px !important; /* Tamanho idêntico */
+    line-height: 1.6 !important; /* Mesmo line-height */
+  }
 
-/* Garantir que o container tenha posição relativa para os absolutos internos */
-.gradient-border {
-  position: relative;
-  display: block;
-}
-
+  
 
 /* Cores de destaque de sintaxe - Tema suave e elegante */
 .cm-keyword { color: #93c5fd; } /* Azul claro e suave para keywords */
@@ -162,6 +168,12 @@
 .cm-meta { color: #94a3b8; } /* Cinza claro para metadados */
 
 .highlight-line {
-  position: relative;
-  display: block;
+    position: relative;
+    display: block;
+}
+
+@media (max-width: 480px) {
+    #code-mirror-container {
+        min-height: 320px; /* Altura mínima inicial */
+    }
 }

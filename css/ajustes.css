@@ -5,29 +5,6 @@ body {
     font-family: 'Fira Code', monospace;
 }
 
-/* Custom scrollbar for code editor and terminal */
-#codeEditor, #terminalContainer {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(100, 116, 139, 0.5) rgba(30, 41, 59, 0.1);
-}
-
-
-#codeEditor::-webkit-scrollbar, #terminalContainer::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-#codeEditor::-webkit-scrollbar-track, #terminalContainer::-webkit-scrollbar-track {
-    background: rgba(30, 41, 59, 0.1);
-    border-radius: 4px;
-}
-
-#codeEditor::-webkit-scrollbar-thumb, #terminalContainer::-webkit-scrollbar-thumb {
-    background-color: rgba(100, 116, 139, 0.5);
-    border-radius: 4px;
-}
-
-
 /* Customizing textarea focus to prevent blue outline */
 #codeEditor:focus {
     outline: none;
