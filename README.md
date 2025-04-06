@@ -96,7 +96,7 @@ Distribuído sob licença MIT. Veja `LICENSE` para mais informações.
 
 ## ✉️ Contato
 
-Instagram- [https://instagram.com/dev_inojoza_] 
+Instagram: [https://instagram.com/dev_inojoza_] 
 
 Hub de Conexões: [https://inojoza28.github.io/conexoes]
 
