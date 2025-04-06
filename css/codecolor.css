@@ -1,0 +1,63 @@
+/* Tema Moonlight Refinado */
+.monaco-editor {
+  --vscode-editor-background: #1a1a2f;
+  --vscode-editor-foreground: #e3e4e6;
+  --vscode-editorLineNumber-foreground: #4a4a6a;
+  --vscode-editorCursor-foreground: #6cb6ff;
+  --vscode-editor-selectionBackground: #6cb6ff40;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, #4f46e5, #10b981);
+  border-radius: inherit;
+  z-index: -1;
+  animation: borderAnim 4s ease infinite;
+}
+
+@keyframes borderAnim {
+  0%,
+  100% {
+    opacity: 0.8;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    opacity: 0.4;
+    filter: hue-rotate(20deg);
+  }
+}
+
+.editor-toolbar {
+  background: rgba(16, 18, 27, 0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scrollbar Elegante */
+.monaco-scrollable-element::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.monaco-scrollable-element::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+  border-radius: 4px;
+}
+
+/* Terminal Moderno */
+#terminal {
+  color: #e3e4e6;
+}
+
+.terminal-entry {
+  padding: 0.5rem 0;
+  border-left: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.terminal-entry:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-left-color: #6cb6ff;
+}

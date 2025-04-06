@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const executeBtn = document.getElementById("executeBtn");
   const clearTerminalBtn = document.getElementById("clearTerminalBtn");
   const terminal = document.getElementById("terminal");
-  const themeToggleBtn = document.getElementById("themeToggleBtn");
+  const copyBtn = document.getElementById("copyBtn"); // Novo elemento
   const executionStats = document.getElementById("executionStats");
 
   // Default code
@@ -20,6 +20,15 @@ const a = 10;
 const b = 5;
 const soma = a + b;
 console.log(\`A soma de \${a} e \${b} é \${soma}\`);`;
+
+  // Função de cópia
+  function copyCode() {
+    navigator.clipboard.writeText(codeEditor.value).then(() => {
+      const feedback = document.getElementById("copyFeedback");
+      feedback.classList.add("copy-feedback");
+      setTimeout(() => feedback.classList.remove("copy-feedback"), 1500);
+    });
+  }
 
   // Load saved code from localStorage or use default
   function loadSavedCode() {
@@ -47,68 +56,60 @@ console.log(\`A soma de \${a} e \${b} é \${soma}\`);`;
     executionStats.textContent = "";
   }
 
-  // Toggle theme
-  function toggleTheme() {
-    document.body.classList.toggle("light-theme");
-    localStorage.setItem(
-      "theme",
-      document.body.classList.contains("light-theme") ? "light" : "dark"
-    );
-  }
 
   // Execute JavaScript code
   function executeCode() {
     // Limpa o terminal antes de cada execução
     clearTerminal();
-    
+
     const code = codeEditor.value;
 
     if (!code.trim()) {
-        writeToTerminal("Erro: Nenhum código para executar.", "terminal-error");
-        return;
+      writeToTerminal("Erro: Nenhum código para executar.", "terminal-error");
+      return;
     }
 
     writeToTerminal("> Executando código JavaScript...", "terminal-info");
     const startTime = performance.now();
 
     try {
-        const logs = [];
-        const originalConsoleLog = console.log;
+      const logs = [];
+      const originalConsoleLog = console.log;
 
-        // Captura dos logs
-        console.log = (...args) => {
-            logs.push(args.join(" "));
-            originalConsoleLog(...args);
-        };
+      // Captura dos logs
+      console.log = (...args) => {
+        logs.push(args.join(" "));
+        originalConsoleLog(...args);
+      };
 
-        // Mock de input
-        const mockInput = (prompt) => {
-            writeToTerminal(prompt, "terminal-prompt");
-            return "Usuário";
-        };
+      // Mock de input
+      const mockInput = (prompt) => {
+        writeToTerminal(prompt, "terminal-prompt");
+        return "Usuário";
+      };
 
-        // Execução segura
-        const userCode = new Function(
-            "input",
-            "console",
-            `try {
+      // Execução segura
+      const userCode = new Function(
+        "input",
+        "console",
+        `try {
                 ${code}
             } catch (error) {
                 console.log('Erro durante execução:', error.message);
             }`
-        );
+      );
 
-        userCode(mockInput, console);
-        console.log = originalConsoleLog;
+      userCode(mockInput, console);
+      console.log = originalConsoleLog;
 
-        // Exibir resultados
-        if (logs.length > 0) {
-            logs.forEach((line) => writeToTerminal(line));
-        } else {
-            writeToTerminal("Código executado sem saída.", "terminal-info");
-        }
+      // Exibir resultados
+      if (logs.length > 0) {
+        logs.forEach((line) => writeToTerminal(line));
+      } else {
+        writeToTerminal("Código executado sem saída.", "terminal-info");
+      }
     } catch (error) {
-        writeToTerminal(`Erro crítico: ${error.message}`, "terminal-error");
+      writeToTerminal(`Erro crítico: ${error.message}`, "terminal-error");
     }
 
     // Footer de execução
@@ -118,9 +119,11 @@ console.log(\`A soma de \${a} e \${b} é \${soma}\`);`;
 
     // Estatísticas
     const endTime = performance.now();
-    executionStats.textContent = `⏱️ Tempo: ${(endTime - startTime).toFixed(2)}ms`;
+    executionStats.textContent = `⏱️ Tempo: ${(endTime - startTime).toFixed(
+      2
+    )}ms`;
     saveCode();
-}
+  }
   // Handle tab key in textarea
   function handleTabKey(e) {
     if (e.key === "Tab") {
@@ -142,7 +145,7 @@ console.log(\`A soma de \${a} e \${b} é \${soma}\`);`;
   // Event Listeners
   executeBtn.addEventListener("click", executeCode);
   clearTerminalBtn.addEventListener("click", clearTerminal);
-  themeToggleBtn.addEventListener("click", toggleTheme);
+  copyBtn.addEventListener("click", copyCode); // Novo listener
   codeEditor.addEventListener("keydown", handleTabKey);
 
   // Support for Ctrl+Enter to execute code

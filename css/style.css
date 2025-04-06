@@ -26,27 +26,6 @@ body {
     border-radius: 4px;
 }
 
-/* Light theme overrides */
-body.light-theme {
-    background-color: #f8fafc;
-    color: #334155;
-}
-
-body.light-theme #codeEditor,
-body.light-theme #terminalContainer,
-body.light-theme #languageSelect {
-    background-color: #f1f5f9;
-    color: #334155;
-    border-color: #cbd5e1;
-}
-
-body.light-theme #terminal {
-    color: #334155;
-}
-
-body.light-theme header h1 {
-    color: #3b82f6;
-}
 
 /* Customizing textarea focus to prevent blue outline */
 #codeEditor:focus {
@@ -82,9 +61,6 @@ body.light-theme header h1 {
     overflow: auto;
 }
 
-body.light-theme .fullscreen-mode {
-    background-color: #f8fafc;
-}
 
 /* Animation for terminal updates */
 @keyframes fadeIn {
