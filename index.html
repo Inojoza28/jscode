@@ -6,11 +6,8 @@
     <title>JS Terminal Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="img/logo.png">
-    <link rel="stylesheet" href="css/codecolor.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fira-code@6.2.0/distr/fira_code.css">
-    <!-- Adicione antes do </head> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
     <style>
         /* Estilos customizados */
         .gradient-border {
@@ -158,11 +155,14 @@
                      </button>
                 </div>
                 
-                <!-- Substitua a div .gradient-border pelo seguinte -->
-                <div class="gradient-border neon-shadow relative" id="editorContainer">
-                    <div id="codeEditor" class="w-full h-64 lg:h-[480px]"></div>
+                <div class="gradient-border neon-shadow">
+                    <textarea 
+                        id="codeEditor" 
+                        class="w-full h-64 lg:h-[480px] bg-slate-900/50 text-gray-100 p-4 font-mono text-sm resize-y focus:outline-none caret-blue-400"
+                        placeholder="// Digite seu código aqui..."
+                        spellcheck="false"
+                    ></textarea>
                 </div>
-                
 
                 <div class="flex gap-3 mt-4">
                     <button id="executeBtn" class="flex-1 bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-500 hover:to-green-500 text-white py-3 px-6 rounded-lg flex items-center gap-2 smooth-transition">
@@ -209,7 +209,6 @@
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
-    <script src="js/codecolor.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
