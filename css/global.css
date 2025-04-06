@@ -105,7 +105,7 @@
     overflow-y: hidden; /* Mantém scroll vertical desativado */
     font-family: 'Fira Code', monospace;
     line-height: 1.6;
-    min-height: 520px; /* Altura mínima inicial */
+    min-height: 480px; /* Altura mínima inicial */
   }
   
   /* Textarea Editável */
