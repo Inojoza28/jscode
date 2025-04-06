@@ -1,0 +1,158 @@
+/* Estilos customizados */
+.gradient-border {
+    position: relative;
+    background: linear-gradient(45deg, #1e293b, #0f172a);
+    border-radius: 0.75rem;
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, #3b82f6, #10b981);
+    border-radius: inherit;
+    z-index: -1;
+    animation: borderAnim 3s linear infinite;
+}
+
+@keyframes borderAnim {
+    0% { opacity: 0.7; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.7; }
+}
+
+.terminal-entry {
+    padding: 0.375rem 0;
+    border-left: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.terminal-entry:hover {
+    background: rgba(255,255,255,0.03);
+    border-left-color: #3b82f6;
+}
+
+.terminal-info { color: #60a5fa; }
+.terminal-error { color: #f87171; }
+.terminal-prompt { color: #34d399; }
+
+.editor-toolbar {
+    background: linear-gradient(15deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    backdrop-filter: blur(4px);
+}
+
+.neon-shadow {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.smooth-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar personalizada */
+#terminal::-webkit-scrollbar-track,
+#code-mirror-container::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+}
+
+#terminal::-webkit-scrollbar-thumb,
+#code-mirror-container::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 4px;
+}
+
+#terminal::-webkit-scrollbar,
+#code-mirror-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.8; }
+    50% { opacity: 0.4; }
+    100% { opacity: 0.8; }
+}
+
+.loading-pulse {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Feedback de cópia */
+.copy-feedback {
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.copy-feedback.active {
+    opacity: 1;
+    transform: translateY(-5px);
+    animation: fadeOut 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; transform: translateY(-5px); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Editor de código com coloração de sintaxe */
+#code-mirror-container {
+    position: relative;
+    overflow: auto;
+    font-family: 'Fira Code', monospace;
+    line-height: 1.6;
+}
+
+#code-editor {
+    caret-color: #38bdf8;
+    font-family: 'Fira Code', monospace;
+    line-height: 1.6;
+    tab-size: 4;
+    overflow: hidden;
+    resize: none;
+    background-color: transparent !important;
+    color: transparent !important; /* Alterar para transparent */
+    caret-color: #38bdf8; /* Mantém o cursor visível */
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    white-space: pre;
+}
+
+
+#syntax-highlighter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    white-space: pre;
+    font-family: 'Fira Code', monospace;
+    line-height: 1.6;
+    tab-size: 4;
+}
+
+/* Cores de destaque de sintaxe - Tema suave e elegante */
+.cm-keyword { color: #93c5fd; } /* Azul claro e suave para keywords */
+.cm-operator { color: #cbd5e1; } /* Quase branco para operadores */
+.cm-string { color: #86efac; } /* Verde suave para strings */
+.cm-number { color: #fdba74; } /* Laranja claro para números */
+.cm-comment { color: #64748b; } /* Cinza para comentários */
+.cm-variable { color: #e2e8f0; } /* Branco para variáveis */
+.cm-property { color: #c4b5fd; } /* Lilás para propriedades */
+.cm-def { color: #93c5fd; } /* Azul claro para definições */
+.cm-builtin { color: #f9a8d4; } /* Rosa suave para funções built-in */
+.cm-atom { color: #fb923c; } /* Laranja para booleanos/null */
+.cm-meta { color: #94a3b8; } /* Cinza claro para metadados */
+
+.highlight-line {
+    position: relative;
+    display: block;
+}
