@@ -80,24 +80,6 @@ open index.html  # Ou clique duplo no arquivo
 - Navegador moderno (Chrome 90+, Firefox 88+)
 - Conexão internet (para CDNs)
 
-## 🤝 Como Contribuir
-
-1. Faça um Fork do projeto
-2. Crie sua Branch:
-```bash
-git checkout -b feature/nova-feature
-```
-3. Commit suas mudanças:
-```bash
-git commit -m 'Adiciona nova feature incrível'
-```
-4. Push para a Branch:
-```bash
-git push origin feature/nova-feature
-```
-5. Abra um Pull Request
-
-**Reporte bugs via** [Issues](https://github.com/inojoza28/terminal/issues)
 
 ## 📄 Licença
 
@@ -105,12 +87,12 @@ Distribuído sob licença MIT. Veja `LICENSE` para mais informações.
 
 ## ✉️ Contato
 
-Equipe de Desenvolvimento - [contato@jsterminal.pro](#)  
-Projeto no GitHub: [https://github.com/seu-usuario/js-terminal-pro](#)
+Instagram- [https://instagram.com/dev_inojoza_] 
+Hub de Conexões: [https://inojoza28.github.io/conexoes]
 
 ---
 
 **Feito com ❤️ por Gabriel Inojoza**  
 [![GitHub Follow](https://img.shields.io/github/followers/inojoza28?style=social)](https://github.com/inojoza28)
-```
+
 
