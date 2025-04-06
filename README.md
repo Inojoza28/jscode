@@ -28,21 +28,25 @@
 - **🚦 Console Interativo**  
   Saída colorida para logs, erros e prompts
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Tech Stack & Ferramentas
 
 <div align="left">
-  <img src="https://skillicons.dev/icons?i=html,tailwind,js,prism,font" alt="Tech Stack" />
+  <img src="https://skillicons.dev/icons?i=html,css,tailwind,js,git,github,vscode" alt="Tecnologias" />
 </div>
 
-**Stack Principal:**
-- **Frontend:**  
-  <img src="https://skillicons.dev/icons?i=html" width="14" alt="HTML5"/> HTML5 • 
-  <img src="https://skillicons.dev/icons?i=tailwind" width="14" alt="Tailwind"/> Tailwind CSS • 
-  <img src="https://skillicons.dev/icons?i=js" width="14" alt="JavaScript"/> JavaScript ES6+
+**Desenvolvimento Principal:**
+- <img src="https://skillicons.dev/icons?i=html" width="16"/> HTML5
+- <img src="https://skillicons.dev/icons?i=tailwind" width="16"/> Tailwind CSS
+- <img src="https://skillicons.dev/icons?i=js" width="16"/> JavaScript Moderno
 
-**Ferramentas:**
-- <img src="https://skillicons.dev/icons?i=prism" width="14" alt="Prism.js"/> Prism.js • 
-  <img src="https://skillicons.dev/icons?i=font" width="14" alt="Fira Code"/> Fira Code Font
+**Ecossistema:**
+- <img src="https://skillicons.dev/icons?i=prism" width="16"/> Prism.js (Syntax Highlight)
+- <img src="https://skillicons.dev/icons?i=font" width="16"/> Fira Code (Font)
+- <img src="https://skillicons.dev/icons?i=github" width="16"/> GitHub Pages
+
+**Dev Tools:**
+- <img src="https://skillicons.dev/icons?i=vscode" width="16"/> VS Code
+- <img src="https://skillicons.dev/icons?i=git" width="16"/> Git
 
 ## 🖥️ Como Usar
 
