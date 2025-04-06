@@ -40,8 +40,8 @@
 - <img src="https://skillicons.dev/icons?i=js" width="16"/> JavaScript Moderno
 
 **Ecossistema:**
-- <img src="https://skillicons.dev/icons?i=prism" width="16"/> Prism.js (Syntax Highlight)
-- <img src="https://skillicons.dev/icons?i=font" width="16"/> Fira Code (Font)
+- Prism.js (Syntax Highlight)
+- Fira Code (Font)
 - <img src="https://skillicons.dev/icons?i=github" width="16"/> GitHub Pages
 
 **Dev Tools:**
