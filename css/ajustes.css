@@ -11,6 +11,17 @@ body {
     scrollbar-color: rgba(100, 116, 139, 0.5) rgba(30, 41, 59, 0.1);
 }
 
+
+#code-mirror-container {
+    padding-bottom: 2rem !important; /* Espaço extra na base */
+    min-height: 200px; /* Altura mínima garantida */
+  }
+  
+  /* Ajuste a textarea e o highlighter para preencher o espaço */
+  #code-editor, #syntax-highlighter {
+    padding-bottom: 2rem !important;
+  }
+
 #codeEditor::-webkit-scrollbar, #terminalContainer::-webkit-scrollbar {
     width: 8px;
     height: 8px;
