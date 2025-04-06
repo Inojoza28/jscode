@@ -6,7 +6,7 @@
 **Ambiente avançado para execução de JavaScript em tempo real com syntax highlighting e recursos profissionais**
 
 
-![Screenshot do JS Terminal Pro](screenshot.png) <!-- Adicione uma screenshot -->
+![Screenshot do JS Terminal Pro](preview/screenshot.png) <!-- Adicione uma screenshot -->
 
 ## ✨ Recursos Principais
 
@@ -30,14 +30,19 @@
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Frontend:**  
-  ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-  ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
-  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+<div align="left">
+  <img src="https://skillicons.dev/icons?i=html,tailwind,js,prism,font" alt="Tech Stack" />
+</div>
 
-- **Ferramentas:**  
-  ![Fira Code](https://img.shields.io/badge/Font-Fira_Code-399ED6)
-  ![Prism.js](https://img.shields.io/badge/Syntax_Prism.js-3C4A5F)
+**Stack Principal:**
+- **Frontend:**  
+  <img src="https://skillicons.dev/icons?i=html" width="14" alt="HTML5"/> HTML5 • 
+  <img src="https://skillicons.dev/icons?i=tailwind" width="14" alt="Tailwind"/> Tailwind CSS • 
+  <img src="https://skillicons.dev/icons?i=js" width="14" alt="JavaScript"/> JavaScript ES6+
+
+**Ferramentas:**
+- <img src="https://skillicons.dev/icons?i=prism" width="14" alt="Prism.js"/> Prism.js • 
+  <img src="https://skillicons.dev/icons?i=font" width="14" alt="Fira Code"/> Fira Code Font
 
 ## 🖥️ Como Usar
 
