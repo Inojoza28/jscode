@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const codeContainer = document.getElementById("code-mirror-container");
   const executeBtn = document.getElementById("executeBtn");
   const clearTerminalBtn = document.getElementById("clearTerminalBtn");
+  const clearCodeBtn = document.getElementById("clearCodeBtn");
   const terminal = document.getElementById("terminal");
   const copyBtn = document.getElementById("copyBtn");
   const executionStats = document.getElementById("executionStats");
@@ -381,6 +382,17 @@ console.log(\`Bem-vindo, \${nome}!\`);
     writeToTerminal("[Sistema] Terminal limpo", "terminal-info");
   }
 
+  // Nova função para limpar o código
+  function clearCode() {
+    // Perguntar ao usuário se deseja limpar o código
+    if (confirm("Tem certeza que deseja limpar todo o código?")) {
+      codeEditor.value = "";
+      applyHighlighting("");
+      saveCode(); // Opcional: salvar o estado vazio no localStorage
+      writeToTerminal("[Sistema] Editor de código limpo", "terminal-info");
+    }
+  }
+
   // Execute JavaScript code
   function executeCode() {
     // Limpa o terminal silenciosamente antes de cada execução
@@ -491,7 +503,8 @@ console.log(\`Bem-vindo, \${nome}!\`);
 
   // Event Listeners
   executeBtn.addEventListener("click", executeCode);
-  clearTerminalBtn.addEventListener("click", clearTerminalWithMessage); // ← Alterado
+  clearTerminalBtn.addEventListener("click", clearTerminalWithMessage);
+  clearCodeBtn.addEventListener("click", clearCode); // Novo event listener
   copyBtn.addEventListener("click", copyCode);
 
   codeEditor.addEventListener("keydown", handleTabKey);
