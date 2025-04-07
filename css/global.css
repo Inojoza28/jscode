@@ -170,7 +170,7 @@ html{
 .cm-builtin { color: #ff79c6; }    /* Rosa neon moderno */
 .cm-atom { color: #ffb86c; }       /* Laranja pêssego vibrante */
 .cm-meta { color: #a4b0be; }       /* Cinza metálico claro */
-.cm-bracket { color: #7dcfff; }    /* Rosa elétrico harmonizado */
+.cm-bracket { color: #ff79c6; }    /* Rosa elétrico harmonizado */
 
 .highlight-line {
     position: relative;
