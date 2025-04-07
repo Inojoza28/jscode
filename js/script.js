@@ -20,37 +20,105 @@ console.log(\`Bem-vindo, \${nome}!\`);
 
 `;
 
-
   // Tokens para highlight de JavaScript
   const jsTokens = {
     keywords: [
-      "const", "let", "var", "function", "return", "if", "else", "for", "while", "do",
-      "switch", "case", "default", "break", "continue", "new", "delete", "typeof",
-      "instanceof", "void", "class", "extends", "super", "import", "export", "from",
-      "as", "try", "catch", "finally", "throw", "async", "await", "yield", "of", "in"
+      "const",
+      "let",
+      "var",
+      "function",
+      "return",
+      "if",
+      "else",
+      "for",
+      "while",
+      "do",
+      "switch",
+      "case",
+      "default",
+      "break",
+      "continue",
+      "new",
+      "delete",
+      "typeof",
+      "instanceof",
+      "void",
+      "class",
+      "extends",
+      "super",
+      "import",
+      "export",
+      "from",
+      "as",
+      "try",
+      "catch",
+      "finally",
+      "throw",
+      "async",
+      "await",
+      "yield",
+      "of",
+      "in",
     ],
     operators: [
-      "+", "-", "*", "/", "%", "=", "!", "<", ">", "?", ":", ".", ",", ";",
-      "===", "==", ">=", "<=", "++", "--", "&&", "||", "??", "?."
+      "+",
+      "-",
+      "*",
+      "/",
+      "%",
+      "=",
+      "!",
+      "<",
+      ">",
+      "?",
+      ":",
+      ".",
+      ",",
+      ";",
+      "===",
+      "==",
+      ">=",
+      "<=",
+      "++",
+      "--",
+      "&&",
+      "||",
+      "??",
+      "?.",
     ],
     builtins: [
-      "console", "Math", "Date", "String", "Array", "Object", "Number",
-      "Boolean", "RegExp", "Map", "Set", "Promise", "JSON", "Error"
+      "console",
+      "Math",
+      "Date",
+      "String",
+      "Array",
+      "Object",
+      "Number",
+      "Boolean",
+      "RegExp",
+      "Map",
+      "Set",
+      "Promise",
+      "JSON",
+      "Error",
     ],
-    atoms: ["true", "false", "null", "undefined", "NaN", "Infinity"]
+    atoms: ["true", "false", "null", "undefined", "NaN", "Infinity"],
+    // No objeto jsTokens
+    brackets: ["(", ")", "{", "}", "[", "]"],
   };
 
   // Aplicar coloração de sintaxe ao código
   function applyHighlighting(code) {
     if (!code) {
-      syntaxHighlighter.innerHTML = '<span class="cm-comment">// Digite seu código aqui...</span>';
+      syntaxHighlighter.innerHTML =
+        '<span class="cm-comment">// Digite seu código aqui...</span>';
       return;
     }
 
-    let html = '';
+    let html = "";
     let inString = null; // Marca se estamos dentro de uma string
     let inComment = false; // Marca se estamos dentro de um comentário
-    let token = '';
+    let token = "";
     let i = 0;
 
     function tokenize() {
@@ -78,26 +146,25 @@ console.log(\`Bem-vindo, \${nome}!\`);
       else if (token.length > 0) {
         return `<span class="cm-variable">${token}</span>`;
       }
-      return '';
+      return "";
     }
 
     while (i < code.length) {
       const char = code[i];
-      const nextChar = code[i + 1] || '';
+      const nextChar = code[i + 1] || "";
 
       // Verificar comentários de linha
-      if (char === '/' && nextChar === '/' && !inString) {
+      if (char === "/" && nextChar === "/" && !inString) {
         // Processa qualquer token acumulado antes do comentário
         if (token) {
           html += tokenize();
-          token = '';
+          token = "";
         }
 
         // Encontra o fim da linha ou o fim do código
-        const endOfLine = code.indexOf('\n', i);
-        const commentContent = endOfLine === -1
-          ? code.substring(i)
-          : code.substring(i, endOfLine);
+        const endOfLine = code.indexOf("\n", i);
+        const commentContent =
+          endOfLine === -1 ? code.substring(i) : code.substring(i, endOfLine);
 
         html += `<span class="cm-comment">${escapeHTML(commentContent)}</span>`;
         i = endOfLine === -1 ? code.length : endOfLine;
@@ -105,12 +172,15 @@ console.log(\`Bem-vindo, \${nome}!\`);
       }
 
       // Verificar strings
-      if ((char === '"' || char === "'" || char === '`') && (i === 0 || code[i - 1] !== '\\')) {
+      if (
+        (char === '"' || char === "'" || char === "`") &&
+        (i === 0 || code[i - 1] !== "\\")
+      ) {
         if (inString === null) {
           // Início de uma string
           if (token) {
             html += tokenize();
-            token = '';
+            token = "";
           }
           inString = char;
           html += `<span class="cm-string">${escapeHTML(char)}`;
@@ -132,10 +202,10 @@ console.log(\`Bem-vindo, \${nome}!\`);
         token += char;
       }
       // Espaços e quebras de linha
-      else if (char === ' ' || char === '\t' || char === '\n') {
+      else if (char === " " || char === "\t" || char === "\n") {
         if (token) {
           html += tokenize();
-          token = '';
+          token = "";
         }
         html += char;
       }
@@ -143,23 +213,28 @@ console.log(\`Bem-vindo, \${nome}!\`);
       else {
         if (token) {
           html += tokenize();
-          token = '';
+          token = "";
         }
 
-        // Verificar operadores compostos como ==, ===, etc.
-        let op = char;
-        if (jsTokens.operators.includes(char + nextChar)) {
-          op = char + nextChar;
-          i++;
+        // Verifica se é um bracket
+        if (jsTokens.brackets.includes(char)) {
+          html += `<span class="cm-bracket">${escapeHTML(char)}</span>`;
         }
+        // Verifica operadores compostos
+        else {
+          let op = char;
+          if (jsTokens.operators.includes(char + nextChar)) {
+            op = char + nextChar;
+            i++;
+          }
 
-        if (jsTokens.operators.includes(op)) {
-          html += `<span class="cm-operator">${escapeHTML(op)}</span>`;
-        } else {
-          html += escapeHTML(char);
+          if (jsTokens.operators.includes(op)) {
+            html += `<span class="cm-operator">${escapeHTML(op)}</span>`;
+          } else {
+            html += escapeHTML(char);
+          }
         }
       }
-
       i++;
     }
 
@@ -170,11 +245,11 @@ console.log(\`Bem-vindo, \${nome}!\`);
 
     // Fechar qualquer string que não foi fechada
     if (inString !== null) {
-      html += '</span>';
+      html += "</span>";
     }
 
     // Processar quebras de linha para melhor leitura
-    html = html.replace(/\n/g, '<br>');
+    html = html.replace(/\n/g, "<br>");
 
     syntaxHighlighter.innerHTML = html;
   }
@@ -182,11 +257,11 @@ console.log(\`Bem-vindo, \${nome}!\`);
   // Escapar caracteres HTML
   function escapeHTML(str) {
     return str
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 
   // Sincronizar a rolagem entre a textarea e o highlighter
@@ -225,7 +300,6 @@ console.log(\`Bem-vindo, \${nome}!\`);
     terminal.scrollTop = terminal.scrollHeight;
   }
 
-
   // Função principal de limpeza (sem mensagem)
   function clearTerminalSilent() {
     terminal.innerHTML = "";
@@ -240,10 +314,8 @@ console.log(\`Bem-vindo, \${nome}!\`);
 
   // Execute JavaScript code
   function executeCode() {
-
     // Limpa o terminal silenciosamente antes de cada execução
     clearTerminalSilent(); // ← Alterado aqui
-
 
     const code = codeEditor.value;
 
@@ -333,14 +405,17 @@ console.log(\`Bem-vindo, \${nome}!\`);
   // Garantir que o código e o layout estejam alinhados
   function updateLayout() {
     // Altura
-    codeEditor.style.height = 'auto';
+    codeEditor.style.height = "auto";
     const newHeight = Math.max(codeEditor.scrollHeight, 120);
     codeEditor.style.height = `${newHeight}px`;
     syntaxHighlighter.style.height = `${newHeight}px`;
     codeContainer.style.height = `${newHeight}px`;
 
     // Largura
-    const codeWidth = Math.max(codeEditor.scrollWidth, codeContainer.clientWidth);
+    const codeWidth = Math.max(
+      codeEditor.scrollWidth,
+      codeContainer.clientWidth
+    );
     codeEditor.style.minWidth = `${codeWidth}px`;
     syntaxHighlighter.style.minWidth = `${codeWidth}px`;
   }
@@ -351,12 +426,12 @@ console.log(\`Bem-vindo, \${nome}!\`);
   copyBtn.addEventListener("click", copyCode);
 
   codeEditor.addEventListener("keydown", handleTabKey);
-  codeEditor.addEventListener('input', () => {
+  codeEditor.addEventListener("input", () => {
     applyHighlighting(codeEditor.value);
     updateLayout();
     syncScroll(); // Força sincronização após mudanças
   });
-  codeEditor.addEventListener('scroll', syncScroll);
+  codeEditor.addEventListener("scroll", syncScroll);
 
   window.addEventListener("resize", updateLayout);
 
