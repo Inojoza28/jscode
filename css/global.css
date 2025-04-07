@@ -158,18 +158,19 @@ html{
   
 
 /* Cores de destaque de sintaxe - Tema suave e elegante */
-.cm-keyword { color: #93c5fd; } /* Azul claro e suave para keywords */
-.cm-operator { color: #cbd5e1; } /* Quase branco para operadores */
-.cm-string { color: #86efac; } /* Verde suave para strings */
-.cm-number { color: #fdba74; } /* Laranja claro para números */
-.cm-comment { color: #64748b; } /* Cinza para comentários */
-.cm-variable { color: #e2e8f0; } /* Branco para variáveis */
-.cm-property { color: #c4b5fd; } /* Lilás para propriedades */
-.cm-def { color: #93c5fd; } /* Azul claro para definições */
-.cm-builtin { color: #f9a8d4; } /* Rosa suave para funções built-in */
-.cm-atom { color: #fb923c; } /* Laranja para booleanos/null */
-.cm-meta { color: #94a3b8; } /* Cinza claro para metadados */
-
+/* Tema Noturno Profissional - v2 */
+.cm-keyword { color: #7dcfff; }    /* Azul ciano mais vibrante */
+.cm-operator { color: #ffd700; }   /* Dourado suave para operadores */
+.cm-string { color: #98f598; }     /* Verde menta mais legível */
+.cm-number { color: #ffa94d; }     /* Laranja coral intenso */
+.cm-comment { color: #6b7b8c; }    /* Cinza-azulado mais suave */
+.cm-variable { color: #f8f8f2; }   /* Branco gelo puro */
+.cm-property { color: #d6b3ff; }   /* Lilás com melhor contraste */
+.cm-def { color: #7dcfff; }        /* Mantém coerência com keyword */
+.cm-builtin { color: #ff79c6; }    /* Rosa neon moderno */
+.cm-atom { color: #ffb86c; }       /* Laranja pêssego vibrante */
+.cm-meta { color: #a4b0be; }       /* Cinza metálico claro */
+.cm-bracket { color: #7dcfff; }    /* Rosa elétrico harmonizado */
 
 .highlight-line {
     position: relative;
