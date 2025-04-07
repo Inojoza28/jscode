@@ -72,12 +72,12 @@ greeting('Mundo JS');
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/js-terminal-pro.git
+git clone https://github.com/inojoza28/terminal.git
 ```
 
 2. Acesse o diretório:
 ```bash
-cd js-terminal-pro
+cd terminal
 ```
 
 3. Abra no navegador:
