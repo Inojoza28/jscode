@@ -1,3 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
 /* Estilos customizados */
 .gradient-border {
     position: relative;
@@ -97,7 +101,6 @@
     100% { opacity: 0; transform: translateY(-10px); }
 }
 
-/* Editor de código com coloração de sintaxe */
 /* Container Principal */
 #code-mirror-container {
     position: relative;
@@ -167,9 +170,37 @@
 .cm-atom { color: #fb923c; } /* Laranja para booleanos/null */
 .cm-meta { color: #94a3b8; } /* Cinza claro para metadados */
 
+
 .highlight-line {
     position: relative;
     display: block;
+}
+
+.scroll-top{
+    display: none;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: #3e50b67e;
+    color: #fff;
+    border: 1px solid transparent;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    padding: 15px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-top:hover{
+    box-shadow: none;
+}
+
+@media screen and (max-width: 720px) {
+.scroll-top{
+    font-size: 14px;
+}
 }
 
 @media (max-width: 480px) {

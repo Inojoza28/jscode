@@ -20,6 +20,7 @@ console.log(\`Bem-vindo, \${nome}!\`);
 
 `;
 
+
   // Tokens para highlight de JavaScript
   const jsTokens = {
     keywords: [
