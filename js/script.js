@@ -118,6 +118,8 @@ console.log(\`Bem-vindo, \${nome}!\`);
     let html = "";
     let inString = null; // Marca se estamos dentro de uma string
     let inComment = false; // Marca se estamos dentro de um comentário
+    let inTemplateInterpolation = false; // Marca se estamos dentro de uma interpolação ${...}
+    let interpolationDepth = 0; // Contador para chaves aninhadas dentro da interpolação
     let token = "";
     let i = 0;
 
@@ -154,7 +156,7 @@ console.log(\`Bem-vindo, \${nome}!\`);
       const nextChar = code[i + 1] || "";
 
       // Verificar comentários de linha
-      if (char === "/" && nextChar === "/" && !inString) {
+      if (char === "/" && nextChar === "/" && !inString && !inTemplateInterpolation) {
         // Processa qualquer token acumulado antes do comentário
         if (token) {
           html += tokenize();
@@ -171,8 +173,66 @@ console.log(\`Bem-vindo, \${nome}!\`);
         continue;
       }
 
+      // Se estamos em uma interpolação de template string
+      if (inTemplateInterpolation) {
+        // Verificar chaves aninhadas
+        if (char === "{") {
+          if (token) {
+            html += tokenize();
+            token = "";
+          }
+          html += `<span class="cm-bracket">${escapeHTML(char)}</span>`;
+          interpolationDepth++;
+        } else if (char === "}") {
+          if (token) {
+            html += tokenize();
+            token = "";
+          }
+          interpolationDepth--;
+          
+          if (interpolationDepth === 0) {
+            // Fim da interpolação
+            inTemplateInterpolation = false;
+            html += `<span class="cm-bracket">}</span><span class="cm-string">`; // Reabre a string
+          } else {
+            html += `<span class="cm-bracket">${escapeHTML(char)}</span>`;
+          }
+        } else if (/[a-zA-Z0-9_$]/.test(char)) {
+          token += char;
+        } else if (char === " " || char === "\t" || char === "\n") {
+          if (token) {
+            html += tokenize();
+            token = "";
+          }
+          html += char;
+        } else {
+          if (token) {
+            html += tokenize();
+            token = "";
+          }
+          
+          // Verifica se é um bracket
+          if (jsTokens.brackets.includes(char)) {
+            html += `<span class="cm-bracket">${escapeHTML(char)}</span>`;
+          }
+          // Verifica operadores compostos
+          else {
+            let op = char;
+            if (jsTokens.operators.includes(char + nextChar)) {
+              op = char + nextChar;
+              i++;
+            }
+
+            if (jsTokens.operators.includes(op)) {
+              html += `<span class="cm-operator">${escapeHTML(op)}</span>`;
+            } else {
+              html += escapeHTML(char);
+            }
+          }
+        }
+      }
       // Verificar strings
-      if (
+      else if (
         (char === '"' || char === "'" || char === "`") &&
         (i === 0 || code[i - 1] !== "\\")
       ) {
@@ -192,6 +252,15 @@ console.log(\`Bem-vindo, \${nome}!\`);
           // Outro tipo de aspas dentro da string
           html += escapeHTML(char);
         }
+      }
+      // Se estamos dentro de uma string template, verifique interpolação
+      else if (inString === "`" && char === "$" && nextChar === "{") {
+        html += `</span>`; // Fecha a span da string
+        html += `<span class="cm-operator">${escapeHTML("$")}</span>`;
+        html += `<span class="cm-bracket">${escapeHTML("{")}</span>`;
+        inTemplateInterpolation = true;
+        interpolationDepth = 1;
+        i++; // Pular o '{'
       }
       // Se estamos dentro de uma string, adicionar caractere
       else if (inString !== null) {
@@ -244,7 +313,7 @@ console.log(\`Bem-vindo, \${nome}!\`);
     }
 
     // Fechar qualquer string que não foi fechada
-    if (inString !== null) {
+    if (inString !== null || inTemplateInterpolation) {
       html += "</span>";
     }
 
