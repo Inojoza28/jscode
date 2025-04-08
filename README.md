@@ -1,4 +1,4 @@
-# 🚀 JS Terminal Pro - Online JavaScript Execution Environment
+# 🚀 JScode - Online JavaScript Execution Environment
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![JavaScript Version](https://img.shields.io/badge/JavaScript-ES6%2B-yellow)](https://developer.mozilla.org/docs/Web/JavaScript)
@@ -72,12 +72,12 @@ greeting('Mundo JS');
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/inojoza28/terminal.git
+git clone https://github.com/inojoza28/jscode.git
 ```
 
 2. Acesse o diretório:
 ```bash
-cd terminal
+cd jscode
 ```
 
 3. Abra no navegador:
