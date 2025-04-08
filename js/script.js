@@ -19,8 +19,7 @@ const nome = "Usuário";
 console.log(\`Bem-vindo, \${nome}!\`);
   
   
-
-  `;
+`;
   
     // Lista de palavras-chave potencialmente perigosas
     const dangerousKeywords = [
