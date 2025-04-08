@@ -206,6 +206,9 @@ html{
 
 @media (max-width: 480px) {
     #code-mirror-container {
-        min-height: 320px; /* Altura mínima inicial */
+        min-height: 420px; /* Altura mínima inicial */
+    }
+    #terminal{
+        min-height: 200px; /* Altura mínima inicial */
     }
 }
