@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Default code
     const defaultCode = `// Exemplo simples em JavaScript
-  console.log("Olá, mundo!");
+console.log("Olá, mundo!");
   
-  // Prompt simulado
-  const nome = "Usuário";
-  console.log(\`Bem-vindo, \${nome}!\`);
+// Prompt simulado
+const nome = "Usuário";
+console.log(\`Bem-vindo, \${nome}!\`);
   
   
   `;
