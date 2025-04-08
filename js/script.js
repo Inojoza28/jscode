@@ -17,8 +17,8 @@ console.log("Olá, mundo!");
 // Prompt simulado
 const nome = "Usuário";
 console.log(\`Bem-vindo, \${nome}!\`);
-  
-  
+
+
 `;
   
     // Lista de palavras-chave potencialmente perigosas
