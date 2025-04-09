@@ -115,7 +115,7 @@ html{
   #code-editor {
     caret-color: #38bdf8;
     font-family: 'Fira Code', monospace; /* Garantir mesma fonte */
-    font-size: 14px; /* Tamanho explícito */
+    font-size: 0.875rem; /* Tamanho explícito */
     line-height: 1.6; /* Mesmo line-height */
     tab-size: 4;
     overflow-x: auto !important; /* Scroll horizontal automático */
@@ -223,10 +223,19 @@ html{
     box-shadow: none;
 }
 
+@media (max-width: 768px) {
+    #code-editor,
+    #syntax-highlighter {
+        font-size: 13.5px !important; /* Reduz 1px */
+        line-height: 1.6 !important; /* Ajuste fino */
+    }
+}
+
+
 @media screen and (max-width: 720px) {
 .scroll-top{
     font-size: 14px;
-}
+  }
 }
 
 @media (max-width: 480px) {
@@ -237,3 +246,4 @@ html{
         min-height: 190px; /* Altura mínima inicial */
     }
 }
+
