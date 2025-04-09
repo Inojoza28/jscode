@@ -28,49 +28,61 @@
 
 <body class="bg-slate-900 text-gray-100 min-h-screen">
     <div class="container mx-auto px-4 py-8 max-w-4xl">
-        <header class="mb-10 md:mb-12 px-4 md:px-0 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition">
+        <header class="mb-8 md:mb-10 px-4 md:px-0 pt-4 pb-6 rounded-3xl shadow-2xl flex flex-col items-center text-center border border-slate-700/20 border-b-[3px] border-b-emerald-500/30 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 backdrop-blur-md relative overflow-hidden">
+    
+            <!-- Linha decorativa inferior -->
+            <div class="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
+        
+            <!-- Efeito de background dinâmico -->
+            <div class="absolute inset-0 opacity-20 pointer-events-none"
+                 style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMzAgMEw2MCAzMEwzMCA2MEwwIDMwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjM2I0ZTYxIiBzdHJva2Utb3BhY2l0eT0iMC4wMyIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+')">
+            </div>
+        
+            <!-- Gradiente sutil -->
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-400/5 to-green-400/3 pointer-events-none"></div>
+        
+            <!-- Logo + Título -->
+            <a href="index.html" class="relative flex flex-col md:flex-row items-center gap-3 hover:opacity-90 transition-transform duration-300 hover:scale-[0.98] group">
                 <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <img src="img/logo.png" alt="JS Terminal Logo" class="w-10 h-10 md:w-12 md:h-12">
+                <div class="flex-shrink-0 self-center md:self-start mt-1 md:mt-0 p-1 rounded-2xl">
+                    <img src="img/logo.png" alt="JS Terminal Logo"
+                         class="w-10 h-10 md:w-12 md:h-12 transition-transform duration-300 group-hover:rotate-[15deg]">
                 </div>
-
-                <!-- Título -->
-                <div>
-                    <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent leading-tight">
+        
+                <!-- Título e Subtítulo -->
+                <div class="relative">
+                    <div class="absolute -inset-3 bg-gradient-to-r from-blue-400/20 to-green-400/20 blur-2xl opacity-10"></div>
+                    <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent leading-tight relative">
                         Terminal JScode
                     </h1>
-                    <p class="mt-1 text-xs text-gray-400 opacity-90">
+                    <p class="mt-1 text-xs md:text-sm text-gray-300/80 leading-relaxed max-w-sm md:max-w-none mx-auto md:mx-0 tracking-wide">
                         Ambiente seguro e controlado
                     </p>
                 </div>
+            </a>
+        
+            <!-- Botão -->
+            <div class="mt-5 relative">
+                <a href="index.html" class="py-2 px-5 bg-gradient-to-br from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-gray-300 hover:text-white rounded-xl transition-all duration-200 flex items-center gap-2 text-sm shadow-lg hover:shadow-blue-400/10 border border-slate-700/40 hover:border-slate-600/50">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    <span>Voltar ao Terminal</span>
                 </a>
             </div>
-            
-            <!-- Botão Voltar (responsivo - só ícone em telas pequenas) -->
-            <a href="index.html" class="py-2 px-4 bg-slate-800 hover:bg-slate-700 text-gray-300 hover:text-white rounded-lg transition-all duration-200 flex items-center gap-2 text-sm">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                </svg>
-                <span class="hidden md:inline">Voltar ao Terminal</span>
-            </a>
         </header>
-
         <main>
-            <!-- Título da página -->
-            <div class="text-center mb-6">
-                <h2 class="text-xl md:text-3xl font-semibold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-                  Ambiente Seguro e Restrições
-                </h2>
-                <p class="text-gray-400 text-xs md:text-base mt-1 md:mt-2 max-w-2xl mx-auto">
-                  Entenda as limitações deste terminal e por que elas são importantes
-                </p>
-              </div>
-              
 
             <!-- Conteúdo sobre restrições -->
             <div class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-6 md:p-8 space-y-8">
+                <div class="text-center mb-6">
+                    <h2 class="text-xl md:text-3xl font-semibold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+                      Ambiente Seguro e Restrições
+                    </h2>
+                    <p class="text-gray-400 text-xs md:text-base mt-1 md:mt-2 max-w-2xl mx-auto">
+                      Entenda as limitações deste terminal e por que elas são importantes
+                    </p>
+                  </div>
                 <!-- Por que as restrições existem -->
                 <div>
                     <h3 class="text-lg font-medium text-blue-300 mb-3 flex items-center gap-2">
