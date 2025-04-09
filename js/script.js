@@ -387,7 +387,7 @@ console.log(\`Bem-vindo, \${nome}!\`);
 
   // Verifica código em busca de palavras-chave perigosas
   function checkCodeSecurity(code) {
-    const dangerousMatches = [];
+    const securityIssues = [];
 
     // Verificar acesso ao DOM e outros objetos perigosos
     dangerousKeywords.forEach((keyword) => {
@@ -396,7 +396,7 @@ console.log(\`Bem-vindo, \${nome}!\`);
       let match;
 
       while ((match = regex.exec(code)) !== null) {
-        dangerousMatches.push({
+        securityIssues.push({
           keyword: keyword,
           position: match.index + match[1].length,
         });
@@ -409,20 +409,102 @@ console.log(\`Bem-vindo, \${nome}!\`);
 
     let match;
     while ((match = evalRegex.exec(code)) !== null) {
-      dangerousMatches.push({
+      securityIssues.push({
         keyword: "eval",
         position: match.index,
       });
     }
 
     while ((match = functionRegex.exec(code)) !== null) {
-      dangerousMatches.push({
+      securityIssues.push({
         keyword: "new Function",
         position: match.index,
       });
     }
 
-    return dangerousMatches;
+    // Verificar possíveis loops infinitos
+    const potentialInfiniteLoops = checkForInfiniteLoops(code);
+    potentialInfiniteLoops.forEach((issue) => {
+      securityIssues.push({
+        keyword: "possível loop infinito",
+        position: 0,
+        message: issue.message,
+      });
+    });
+
+    return securityIssues;
+  }
+
+  // Função para obter alternativas seguras baseadas na palavra-chave bloqueada
+  function getSafeAlternative(keyword) {
+    const alternatives = {
+      "document": {
+        explanation: "Acesso ao DOM (Document Object Model) não é permitido neste ambiente por razões de segurança.",
+        alternative: "Este ambiente é focado em lógica JavaScript pura. Para manipulação de DOM, considere usar frameworks online como CodePen ou JSFiddle."
+      },
+      "window": {
+        explanation: "Acesso ao objeto global 'window' não é permitido por razões de segurança.",
+        alternative: "Você pode usar variáveis locais e objetos personalizados para simular funcionalidades."
+      },
+      "localStorage": {
+        explanation: "Acesso ao localStorage não é permitido neste ambiente sandbox.",
+        alternative: "Você pode simular armazenamento usando objetos JavaScript:\n\nconst storage = {};\nstorage.setItem = (key, value) => { storage[key] = value; };\nstorage.getItem = (key) => storage[key];"
+      },
+      "sessionStorage": {
+        explanation: "Acesso ao sessionStorage não é permitido neste ambiente sandbox.",
+        alternative: "Você pode simular armazenamento usando objetos JavaScript:\n\nconst session = {};\nsession.setItem = (key, value) => { session[key] = value; };\nsession.getItem = (key) => session[key];"
+      },
+      "navigator": {
+        explanation: "Acesso ao objeto navigator (informações do navegador) não é permitido por questões de privacidade.",
+        alternative: "Se você está tentando aprender sobre detecção de navegador, pode criar um objeto simulado:\n\nconst mockNavigator = { userAgent: 'Chrome/98.0' };"
+      },
+      "location": {
+        explanation: "Acesso ao objeto location não é permitido para evitar redirecionamentos ou vazamento de informações.",
+        alternative: "Para simular URLs, você pode usar uma string:\n\nconst currentURL = 'https://exemplo.com/pagina';"
+      },
+      "history": {
+        explanation: "Acesso ao histórico de navegação não é permitido por razões de segurança.",
+        alternative: "Para simular navegação, você pode criar um array de estados:\n\nconst mockHistory = [];\nmockHistory.push('/pagina1');"
+      },
+      "fetch": {
+        explanation: "Requisições de rede não são permitidas neste ambiente sandbox.",
+        alternative: "Você pode simular respostas de API:\n\nconst mockFetch = () => Promise.resolve({\n  json: () => Promise.resolve({ data: 'Resposta simulada' })\n});"
+      },
+      "XMLHttpRequest": {
+        explanation: "Requisições XHR não são permitidas neste ambiente sandbox.",
+        alternative: "Você pode simular respostas de API com objetos e Promises."
+      },
+      "WebSocket": {
+        explanation: "Conexões WebSocket não são permitidas neste ambiente sandbox.",
+        alternative: "Você pode simular comunicação em tempo real com eventos temporizados usando setTimeout."
+      },
+      "eval": {
+        explanation: "A função eval() é extremamente perigosa pois executa qualquer código como string, criando vulnerabilidades.",
+        alternative: "Em vez de eval, considere alternativas mais seguras como JSON.parse() para dados ou funções nomeadas."
+      },
+      "Function": {
+        explanation: "O construtor Function é similar ao eval() e representa um risco de segurança.",
+        alternative: "Defina funções normalmente usando function() {} ou arrow functions (() => {})."
+      },
+      "setTimeout": {
+        explanation: "Timers não são permitidos neste ambiente para evitar problemas de desempenho.",
+        alternative: "Para propósitos de aprendizado, você pode simular comportamento assíncrono usando Promise.resolve().then(() => { /* seu código */ });"
+      },
+      "setInterval": {
+        explanation: "Intervalos não são permitidos neste ambiente para evitar loops infinitos e problemas de desempenho.",
+        alternative: "Para demonstrar repetição, use loops regulares com contadores limitados."
+      },
+      "possível loop infinito": {
+        explanation: "Seu código parece conter um padrão que pode resultar em um loop infinito.",
+        alternative: "Certifique-se de que seus loops tenham uma condição de saída clara e que os valores usados na condição sejam modificados dentro do loop. Adicione um contador máximo de iterações para segurança."
+      }
+    };
+
+    // Fallback para palavras-chave sem explicações específicas
+    return alternatives[keyword] || {
+      explanation: `O uso de '${keyword}' é restrito neste ambiente por razões de segurança.`,
+      alternative: "Este terminal é otimizado para praticar lógica de programação JavaScript pura."
+    };
   }
 
   // Função para verificar e limpar o código antes de salvar
@@ -581,19 +663,32 @@ console.log(\`Bem-vindo, \${nome}!\`);
 
     if (securityIssues.length > 0) {
       writeToTerminal(
-        "[Sistema] ⚠️ Potencial código inseguro detectado:",
+        "[Sistema] ⚠️ Código com restrições de segurança detectado:",
         "terminal-warning"
       );
-      securityIssues.forEach((issue) => {
-        writeToTerminal(
-          `  - Uso de '${issue.keyword}' é restrito por motivos de segurança`,
-          "terminal-warning"
-        );
+
+      // Agrupar por palavra-chave para evitar repetição
+      const uniqueIssues = [...new Set(securityIssues.map(issue => issue.keyword))];
+
+      uniqueIssues.forEach((keyword) => {
+        const { explanation, alternative } = getSafeAlternative(keyword);
+
+        writeToTerminal(`🔒 ${keyword}:`, "terminal-keyword");
+        writeToTerminal(`  ${explanation}`, "terminal-explanation");
+        writeToTerminal(`  💡 Alternativa: ${alternative}`, "terminal-alternative");
       });
+
       writeToTerminal(
-        "[Sistema] A execução foi cancelada por motivos de segurança.",
-        "terminal-error"
+        "[Sistema] A execução foi cancelada. Corrija os problemas de segurança e tente novamente.",
+        "terminal-info"
       );
+
+      // Adicionar uma dica para o usuário
+      writeToTerminal(
+        "[Dica] Este ambiente é ideal para praticar algoritmos, estruturas de dados e lógica JavaScript. Para interações com o navegador, considere usar JSFiddle, CodePen ou CodeSandbox.",
+        "terminal-tip"
+      );
+
       return;
     }
 
@@ -737,15 +832,15 @@ console.log(\`Bem-vindo, \${nome}!\`);
           
           // Execução do código do usuário com checkpoints
           ${code
-            .replace(/for\s*\([^)]*\)\s*\{/g, (match) => {
-              return match + " checkExecutionLimits();";
-            })
-            .replace(/while\s*\([^)]*\)\s*\{/g, (match) => {
-              return match + " checkExecutionLimits();";
-            })
-            .replace(/do\s*\{/g, (match) => {
-              return match + " checkExecutionLimits();";
-            })}
+          .replace(/for\s*\([^)]*\)\s*\{/g, (match) => {
+            return match + " checkExecutionLimits();";
+          })
+          .replace(/while\s*\([^)]*\)\s*\{/g, (match) => {
+            return match + " checkExecutionLimits();";
+          })
+          .replace(/do\s*\{/g, (match) => {
+            return match + " checkExecutionLimits();";
+          })}
         } catch (error) {
           console.error("Erro durante execução: " + error.message);
         } finally {
@@ -966,3 +1061,7 @@ console.log(\`Bem-vindo, \${nome}!\`);
   );
   // writeToTerminal("⚠️ Esta é uma versão com segurança aprimorada", "terminal-info");
 });
+
+
+// É isso família, finalizamos esse monstro aqui. 
+// Não tentem entender em casa. Tamo junto e até a próxima! 🔥💻

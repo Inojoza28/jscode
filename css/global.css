@@ -155,7 +155,32 @@ html{
     line-height: 1.6 !important; /* Mesmo line-height */
   }
 
+
+  .terminal-keyword {
+    color: #ff5f5f;
+    font-weight: bold;
+    margin-top: 8px;
+  }
   
+  .terminal-explanation {
+    color: #e0e0e0;
+    margin-left: 10px;
+  }
+  
+  .terminal-alternative {
+    color: #4caf50;
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .terminal-tip {
+    color: #42a5f5;
+    font-style: italic;
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 1px dashed #555;
+  }
+
 
 /* Cores de destaque de sintaxe - Tema suave e elegante */
 /* Tema Noturno Profissional - v2 */
