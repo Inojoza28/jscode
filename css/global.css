@@ -226,7 +226,7 @@ html{
 @media (max-width: 768px) {
     #code-editor,
     #syntax-highlighter {
-        font-size: 13.5px !important; /* Reduz 1px */
+        font-size: 13.55px !important; /* Reduz 1px */
         line-height: 1.6 !important; /* Ajuste fino */
     }
 }
