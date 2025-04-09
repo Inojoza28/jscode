@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Entenda as restrições e limitações do Terminal JScode - um ambiente seguro para execução de JavaScript">
+    <meta name="author" content="Gabriel Inojoza">
+    <title>Restrições - Terminal JScode</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fira-code@6.2.0/distr/fira_code.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --system-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            font-family: var(--system-font);
+        }
+        code, pre, .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="mb-10 md:mb-12 px-4 md:px-0 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-90 transition">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <img src="img/logo.png" alt="JS Terminal Logo" class="w-10 h-10 md:w-12 md:h-12">
+                </div>
+
+                <!-- Título -->
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent leading-tight">
+                        Terminal JScode
+                    </h1>
+                    <p class="mt-1 text-xs text-gray-400 opacity-90">
+                        Ambiente seguro e controlado
+                    </p>
+                </div>
+                </a>
+            </div>
+            
+            <!-- Botão Voltar (responsivo - só ícone em telas pequenas) -->
+            <a href="index.html" class="py-2 px-4 bg-slate-800 hover:bg-slate-700 text-gray-300 hover:text-white rounded-lg transition-all duration-200 flex items-center gap-2 text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                <span class="hidden md:inline">Voltar ao Terminal</span>
+            </a>
+        </header>
+
+        <main>
+            <!-- Título da página -->
+            <div class="text-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+                    Ambiente Seguro e Restrições
+                </h2>
+                <p class="text-gray-400 text-sm md:text-base mt-2 max-w-2xl mx-auto">
+                    Entenda as limitações deste terminal e por que elas são importantes
+                </p>
+            </div>
+
+            <!-- Conteúdo sobre restrições -->
+            <div class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-6 md:p-8 space-y-8">
+                <!-- Por que as restrições existem -->
+                <div>
+                    <h3 class="text-lg font-medium text-blue-300 mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        Por Que as Restrições Existem
+                    </h3>
+                    <p class="text-gray-300 text-sm md:text-base mb-4 leading-relaxed">
+                        O Terminal JScode foi projetado como um ambiente <span class="text-green-400">seguro e controlado</span> para escrever e executar código JavaScript. Para garantir essa segurança e evitar problemas comuns, algumas funcionalidades nativas do JavaScript foram restringidas:
+                    </p>
+                    <ul class="space-y-2 text-gray-300 text-sm md:text-base mb-4 pl-4">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Proteção contra execução de código malicioso</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Prevenção de loops infinitos que poderiam travar seu navegador</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <svg class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Isolamento de código para garantir que sua navegação não seja afetada</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- O que está restrito -->
+                <div>
+                    <h3 class="text-lg font-medium text-blue-300 mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                        O Que Está Restrito
+                    </h3>
+                    <p class="text-gray-300 text-sm md:text-base mb-4 leading-relaxed">
+                        Para manter a integridade do ambiente, as seguintes funcionalidades não estão disponíveis:
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-700/30 p-4 rounded-lg">
+                            <h4 class="text-blue-300 text-sm font-medium mb-2">Acesso ao Navegador</h4>
+                            <ul class="space-y-1 text-xs text-gray-300">
+                                <li>• Objetos DOM (document)</li>
+                                <li>• Objetos globais (window)</li>
+                                <li>• Navegação (history, location)</li>
+                                <li>• Armazenamento (localStorage, cookies)</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-700/30 p-4 rounded-lg">
+                            <h4 class="text-blue-300 text-sm font-medium mb-2">Funções Dinâmicas</h4>
+                            <ul class="space-y-1 text-xs text-gray-300">
+                                <li>• eval() e Function()</li>
+                                <li>• Execução dinâmica de código</li>
+                                <li>• Manipulação insegura de protótipos</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-700/30 p-4 rounded-lg">
+                            <h4 class="text-blue-300 text-sm font-medium mb-2">Rede e Recursos</h4>
+                            <ul class="space-y-1 text-xs text-gray-300">
+                                <li>• Requisições HTTP (fetch, XMLHttpRequest)</li>
+                                <li>• WebSockets e conexões em tempo real</li>
+                                <li>• APIs externas não autorizadas</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-700/30 p-4 rounded-lg">
+                            <h4 class="text-blue-300 text-sm font-medium mb-2">Timers e Processos</h4>
+                            <ul class="space-y-1 text-xs text-gray-300">
+                                <li>• setTimeout e setInterval</li>
+                                <li>• Loops infinitos (detectados automaticamente)</li>
+                                <li>• Execuções longas (limitadas a 3s)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- O que você pode fazer -->
+                <div>
+                    <h3 class="text-lg font-medium text-blue-300 mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        O Que Você Pode Fazer
+                    </h3>
+                    <p class="text-gray-300 text-sm md:text-base mb-4 leading-relaxed">
+                        Este terminal é perfeito para:
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gradient-to-br from-blue-900/30 to-green-900/30 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <h4 class="text-blue-300 text-sm font-medium">Aprendizado</h4>
+                            </div>
+                            <p class="text-xs text-gray-300">Praticar a sintaxe e conceitos JavaScript fundamentais em um ambiente seguro e rápido.</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-900/30 to-green-900/30 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                <h4 class="text-blue-300 text-sm font-medium">Algoritmos</h4>
+                            </div>
+                            <p class="text-xs text-gray-300">Testar e depurar algoritmos, estruturas de dados e lógica de programação.</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-900/30 to-green-900/30 p-4 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                </svg>
+                                <h4 class="text-blue-300 text-sm font-medium">Experimentação</h4>
+                            </div>
+                            <p class="text-xs text-gray-300">Experimentar com novas funcionalidades JavaScript, recursos de ES6+ e soluções criativas.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dicas para uso eficiente -->
+                <div>
+                    <h3 class="text-lg font-medium text-blue-300 mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Dicas Para Uso Eficiente
+                    </h3>
+                    <div class="bg-blue-900/20 border border-blue-700/30 rounded-lg p-4">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-green-400 mr-2 font-medium">1.</span>
+                                <p class="text-sm text-gray-300">Para funcionalidades do navegador (DOM, APIs, etc.), considere usar plataformas como <span class="text-blue-300">CodePen</span> ou <span class="text-blue-300">JSFiddle</span>.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-400 mr-2 font-medium">2.</span>
+                                <p class="text-sm text-gray-300">Use simulações: por exemplo, em vez de <code class="bg-slate-700 px-1 rounded">localStorage</code>, crie um objeto simples para armazenar dados temporariamente.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-400 mr-2 font-medium">3.</span>
+                                <p class="text-sm text-gray-300">Evite loops sem condição de saída clara ou com muitas iterações. Use limites e contadores para prevenir loops infinitos.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-400 mr-2 font-medium">4.</span>
+                                <p class="text-sm text-gray-300">Quando seu código falhar, leia as mensagens de erro com atenção — elas fornecem dicas valiosas sobre os problemas.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão Voltar (Centro da página) - também responsivo -->
+            <div class="text-center mt-8">
+                <a href="index.html" class="inline-flex items-center gap-2 py-2 px-6 bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-500 hover:to-green-500 text-white rounded-lg transition-all duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    <span class="hidden md:inline">Voltar ao Terminal</span>
+                </a>
+            </div>
+        </main>
+
+        <button class="scroll-top" onclick="scrollToTop()">
+            <i class="bx bxs-up-arrow"></i>
+        </button>
+
+        <footer class="mt-12 text-center text-xs text-gray-500/60">
+            <p>© <span id="currentYear"></span> JS Terminal Pro • v1.0.0</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <script src="js/scroll-top.js"></script>
+</body>
+</html>

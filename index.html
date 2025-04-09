@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -143,6 +143,8 @@
                 </div>
             </div>
         </main>
+
+
         <!-- Divisor entre o Main e a Seção Sobre -->
         <div class="section-divider my-10 md:my-14">
             <div class="divider-line"></div>
@@ -158,7 +160,6 @@
         <!-- Seção Sobre o Projeto e Autor -->
         <section class="about-container mb-10 md:mb-14">
             <div class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-6 md:p-8">
-                <!-- Cabeçalho da Seção -->
                 <div class="text-center mb-8">
                     <h2
                         class="text-xl md:text-2xl font-normal bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-semibold about-title">
@@ -167,6 +168,41 @@
                     <p class="text-gray-400 text-sm md:text-base mt-2 max-w-2xl mx-auto about-text">
                         Uma experiência fluida para quem codifica em JavaScript.
                     </p>
+                </div>
+
+                <!-- Card de Informações Complementares -->
+                <div class="feature-notice mb-8 p-4 md:p-5 rounded-lg border border-blue-800/30 bg-gradient-to-br from-slate-800/40 to-blue-900/10 hover:border-blue-600/40 transition-all duration-300 group"
+                    style="font-family: var(--system-font)">
+                    <div class="flex items-start gap-3 md:gap-4">
+                        <div class="flex-shrink-0 mt-1">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center border border-blue-800/50 group-hover:border-blue-600/50 transition-colors">
+                                <svg class="w-5 h-5 text-blue-400/80 group-hover:text-blue-300" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-sm md:text-base font-medium text-blue-300 mb-1.5">
+                                Importante saber antes de usar
+                            </h3>
+                            <p class="text-gray-300 text-xs md:text-sm leading-relaxed mb-3">
+                                Para garantir segurança e performance, nosso terminal possui algumas
+                                <span class="text-blue-300">restrições de recursos</span> e
+                                <span class="text-green-300">funcionalidades especiais</span> que você deve conhecer.
+                            </p>
+                            <a href="restricoes.html"
+                                class="inline-flex items-center gap-2 text-xs md:text-sm font-medium text-blue-300 hover:text-blue-200 transition-colors">
+                                <span>Explorar detalhes técnicos</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -230,12 +266,9 @@
                                 <div
                                     class="w-16 h-16 md:w-18 md:h-18 rounded-full bg-slate-700 p-0.5 border border-slate-600">
                                     <div class="w-full h-full rounded-full overflow-hidden">
-                                       
-                                        <img 
-                                        src="img/profile.jpeg" 
-                                        alt="Gabriel Inojoza"
-                                        class="w-full h-full object-cover"
-                                    >
+
+                                        <img src="img/profile.jpeg" alt="Gabriel Inojoza"
+                                            class="w-full h-full object-cover">
                                     </div>
                                 </div>
                             </div>
