@@ -46,7 +46,6 @@
 
 **Dev Tools:**
 - <img src="https://skillicons.dev/icons?i=vscode" width="16"/> VS Code
-- <img src="https://skillicons.dev/icons?i=git" width="16"/> Git
 
 ## 🖥️ Como Usar
 
