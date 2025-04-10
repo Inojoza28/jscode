@@ -128,6 +128,7 @@ console.log(\`Bem-vindo, \${nome}!\`);
       "Map",
       "Set",
       "Promise",
+      "forEach",
       "JSON",
       "Error",
     ],
