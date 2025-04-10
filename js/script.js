@@ -795,23 +795,24 @@ console.log(\`Bem-vindo, \${nome}!\`);
           }
         };
         
-        // Interceptar métodos de array que podem causar loops
-        ['forEach', 'map', 'filter', 'reduce', 'every', 'some'].forEach(method => {
-          const original = Array.prototype[method];
-          Array.prototype[method] = function(...args) {
-            if (this.length > MAX_ITERATIONS) {
-              throw new Error("Array muito grande para operação " + method);
-            }
-            
-            const callback = args[0];
-            args[0] = function(...cbArgs) {
-              checkExecutionLimits();
-              return callback.apply(this, cbArgs);
-            };
-            
-            return original.apply(this, args);
-          };
-        });
+// Verificação básica para arrays muito grandes
+const checkArraySize = (arr) => {
+  if (arr && arr.length > MAX_ITERATIONS) {
+    throw new Error("Array muito grande para operação");
+  }
+};
+
+// Adicionamos apenas uma verificação básica sem modificar os métodos nativos
+Object.defineProperty(Array.prototype, 'safeForEach', {
+  value: function(callback) {
+    checkArraySize(this);
+    return Array.prototype.forEach.call(this, (item, index, array) => {
+      checkExecutionLimits();
+      return callback(item, index, array);
+    });
+  },
+  enumerable: false
+});
         
         // Instrumentalizar os loops nativos com Babel-like transformações
         // Nota: Isso seria implementado através de AST em um ambiente real
