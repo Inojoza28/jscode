@@ -31,7 +31,7 @@
 ## 🛠️ Tech Stack & Ferramentas
 
 <div align="left">
-  <img src="https://skillicons.dev/icons?i=html,css,tailwind,js,git,github,vscode" alt="Tecnologias" />
+  <img src="https://skillicons.dev/icons?i=html,css,tailwind,js,github,vscode" alt="Tecnologias" />
 </div>
 
 **Desenvolvimento Principal:**
