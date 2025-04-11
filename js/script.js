@@ -49,92 +49,47 @@ console.log(\`Bem-vindo, \${nome}!\`);
     "Promise.resolve().constructor",
   ];
 
-  // Tokens para highlight de JavaScript
-  const jsTokens = {
-    keywords: [
-      "const",
-      "let",
-      "var",
-      "function",
-      "return",
-      "if",
-      "else",
-      "for",
-      "while",
-      "do",
-      "switch",
-      "case",
-      "default",
-      "break",
-      "continue",
-      "new",
-      "delete",
-      "typeof",
-      "instanceof",
-      "void",
-      "class",
-      "extends",
-      "super",
-      "import",
-      "export",
-      "from",
-      "as",
-      "try",
-      "catch",
-      "finally",
-      "throw",
-      "async",
-      "await",
-      "yield",
-      "of",
-      "in",
-    ],
-    operators: [
-      "+",
-      "-",
-      "*",
-      "/",
-      "%",
-      "=",
-      "!",
-      "<",
-      ">",
-      "?",
-      ":",
-      ".",
-      ",",
-      ";",
-      "===",
-      "==",
-      ">=",
-      "<=",
-      "++",
-      "--",
-      "&&",
-      "||",
-      "??",
-      "?.",
-    ],
-    builtins: [
-      "console",
-      "Math",
-      "Date",
-      "String",
-      "Array",
-      "Object",
-      "Number",
-      "Boolean",
-      "RegExp",
-      "Map",
-      "Set",
-      "Promise",
-      "forEach",
-      "JSON",
-      "Error",
-    ],
-    atoms: ["true", "false", "null", "undefined", "NaN", "Infinity"],
-    brackets: ["(", ")", "{", "}", "[", "]"],
-  };
+// Tokens para highlight de JavaScript
+const jsTokens = {
+  keywords: [
+    "const", "let", "var", "function", "return", "if", "else", "for", "while", "do", 
+    "switch", "case", "default", "break", "continue", "new", "delete", "typeof", 
+    "instanceof", "void", "class", "extends", "super", "import", "export", "from", 
+    "as", "try", "catch", "finally", "throw", "async", "await", "yield", "of", "in",
+    "get", "set", "static", "this"
+  ],
+  operators: [
+    "+", "-", "*", "/", "%", "=", "!", "<", ">", "?", ":", ".", ",", ";", "===", "==", 
+    ">=", "<=", "++", "--", "&&", "||", "??", "?.", "+=", "-=", "*=", "/=", "%=", "!==", 
+    "!=", "&", "|", "^", "<<", ">>", ">>>"
+  ],
+  builtins: [
+    // Core objects e functions
+    "console", "Math", "Date", "String", "Array", "Object", "Number", "Boolean", 
+    "RegExp", "Map", "Set", "Promise", "JSON", "Error", "Symbol", 
+    "parseInt", "parseFloat",
+    
+    // Array Methods mais usados
+    "push", "pop", "shift", "unshift", "splice", "slice", "concat", "join", 
+    "forEach", "map", "filter", "reduce", "find", "includes", "sort",
+    
+    // String Methods mais usados
+    "replace", "split", "substring", "toLowerCase", "toUpperCase", "trim", 
+    "indexOf", "startsWith", "endsWith",
+    
+    // Object Methods mais usados
+    "keys", "values", "entries", "assign", "hasOwnProperty",
+    
+    // Promise Methods
+    "then", "catch", "finally", "all", "resolve", "reject"
+  ],
+  atoms: [
+    "true", "false", "null", "undefined", "NaN", "Infinity"
+  ],
+  brackets: [
+    "(", ")", "{", "}", "[", "]"
+  ]
+};
 
   // Aplicar coloração de sintaxe ao código
   function applyHighlighting(code) {
