@@ -67,7 +67,7 @@ const jsTokens = {
     // Core objects e functions
     "console", "Math", "Date", "String", "Array", "Object", "Number", "Boolean", 
     "RegExp", "Map", "Set", "Promise", "JSON", "Error", "Symbol", 
-    "parseInt", "parseFloat",
+    "parseInt", "parseFloat","alert", "prompt", "confirm",
     
     // Array Methods mais usados
     "push", "pop", "shift", "unshift", "splice", "slice", "concat", "join", 
